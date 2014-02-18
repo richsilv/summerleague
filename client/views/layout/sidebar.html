@@ -1,0 +1,36 @@
+<template name="sideBar">
+	<ul class="side-nav">
+	  <li>{{>tableSummary}}</li>
+	  <li class="divider"></li>
+	  <li>{{>fixtureSummary}}</li>
+	  <li class="divider"></li>
+	  <li>{{>photoSelection}}</li>
+	</ul>	
+</template>
+
+<template name="twitterFeed">
+	
+</template>
+
+<template name="tableSummary">
+	<div class="tableSummary">
+		League Table to go here.
+	</div>
+</template>
+
+<template name="fixtureSummary">
+	<h6>Fixtures:</h6>
+	{{#each fixtures}}
+		<h5><a href="/fixtures/{{url}}">{{name}}</a></h5>
+		<h5 class="subheader">{{dateTimeFormatted}}</h5>
+	{{/each}}
+</template>
+
+<template name="photoSelection">
+	<h6>Recent Photos:</h6>
+	{{#each photoSelection}}
+		<a class="th thumbnailHolder" href="/about/photos">
+			<div class="sidebarThumbnail" style="background-image: url('/photos/{{this}}')"></div>
+		</a>
+	{{/each}}
+</template>

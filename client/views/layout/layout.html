@@ -1,0 +1,56 @@
+<head>
+	<title>Summer League Website</title>
+	<link href='http://fonts.googleapis.com/css?family=Faster+One:400,900,700,500' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" href="/summerleague.ico?v=3">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+
+<template name="mainLayout">
+	<div class= "row" id="wrapper">
+		<nav class="top-bar" data-topbar>
+<!-- 			<ul class="title-area">
+				<li class="name">
+				<h1><a href="#">Summer League</a></h1>
+				</li>
+				<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+			</ul> -->
+
+			<section class="top-bar-section">
+				<!-- Right Nav Section -->
+				<ul class="right">
+					<li{{#if route1 'main'}} class="active"{{/if}}><a href="/">Home</a></li>
+					<li{{#if route1 'about'}} class="active"{{/if}}><a href="/about">About</a></li>
+					<li{{#if route1 'news'}} class="active"{{/if}}><a href="/news">News</a></li>
+					<li{{#if route1 'fixtureSpecific'}} class="active"{{/if}}><a href="/fixtures">Fixtures</a></li>
+					<li{{#if route1 'results'}} class="active"{{/if}}><a href="/results">Results</a></li>
+				</ul>
+			</section>
+
+		</nav>
+		{{> headerPic}}		
+		{{yield 'mainYield'}}
+	</div>
+</template>
+
+<template name="main">
+	<div class="medium-3 show-for-medium-up columns summerSideBar">
+		{{yield 'sideBar'}}
+	</div>
+	<div class="medium-9 small-12 columns">
+		{{yield 'mainSection'}}
+	</div>
+</template>
+
+<template name="headerPic">
+	<div id="headerPic">
+		<h1>Summer League</h1>
+		<div id="iron-router-progress" class="spinner" style="width: 0%;"></div>
+	</div>
+</template>
+
+<template name="loading">
+	<div class="loadingDiv">
+		<h2>Loading...</h2>
+	</div>
+</template>

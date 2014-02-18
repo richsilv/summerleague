@@ -1,0 +1,30 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+standard-app-packages
+insecure
+preserve-inputs
+
+iron-router
+houston
+paginated-subscription
+spin
+zurb-foundation
+
+leaflet
+moment
+htmljs
+
+npm
+
+foundation-icons
+foundation-icons-accessibility
+foundation-icons-gen-enclosed
+foundation-icons-social
+foundation-icons-general
+
+datatables
+
+iron-router-progress

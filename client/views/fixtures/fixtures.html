@@ -1,0 +1,17 @@
+<template name="fixturesTemplate">
+	<dl class="sub-nav">
+		{{#each fixtures}}
+		<dd{{#if activeRace}} class="active"{{/if}}><a href="{{pathFor 'fixtureSpecific'}}">{{this.name}}</a></dd>
+		{{/each}}
+	</dl>
+	<hr>
+	{{yield 'fixtureSection'}}
+</template>
+
+<template name="fixtureData">
+	<h2>{{name}}</h2>
+	<h3 class="subheader">{{dateTimeFormatted}}</h3>
+	<h3>Course Description</h3>
+	{{#constant}}<div id="mapHolder"></div>{{/constant}}
+	<p>{{courseDescription}}</p>
+</template>

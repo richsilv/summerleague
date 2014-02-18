@@ -1,0 +1,94 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "iron-router": {},
+      "houston": {},
+      "smart-collections": {},
+      "zurb-foundation": {},
+      "leaflet": {},
+      "moment": {},
+      "npm": {},
+      "foundation-icons-general": {},
+      "foundation-icons": {},
+      "datatables": {}
+    },
+    "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.2",
+        "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
+      },
+      "houston": {
+        "git": "https://github.com/gterrono/meteor-admin-ui.git",
+        "tag": "v1.0.0",
+        "commit": "e98660af09cb3e4e90848abfe943a06e7068cccc"
+      },
+      "smart-collections": {
+        "git": "https://github.com/arunoda/meteor-smart-collections.git",
+        "tag": "v0.4.0",
+        "commit": "da25a5e88c3b5e3c1cb3bd44fd7fdc3234448526"
+      },
+      "zurb-foundation": {
+        "git": "https://github.com/MixinLabs/meteor-foundation.git",
+        "tag": "v0.1.10",
+        "commit": "545234bc38f7a747a5d69b48f75c5cc77ca8382f"
+      },
+      "leaflet": {
+        "git": "https://github.com/bevanhunt/meteor-leaflet.git",
+        "tag": "v0.3.6",
+        "commit": "d9e3bdb824145c1078e52945909bb1cf38724da5"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "npm": {
+        "git": "https://github.com/arunoda/meteor-npm.git",
+        "tag": "v0.2.6",
+        "commit": "177ab6118de5bf8cffb19481343d5762ff7a2aaf"
+      },
+      "foundation-icons-general": {
+        "git": "https://github.com/IainShigeoka/meteor-foundation-icons-general.git",
+        "tag": "v1.0.1",
+        "commit": "0d16dc77ffb76180d63dcbc58716bd1dbf7d66d5"
+      },
+      "foundation-icons": {
+        "git": "https://github.com/IainShigeoka/meteor-foundation-icons-all.git",
+        "tag": "v1.0.1",
+        "commit": "da3b8f7452f9019c904274f1ad00bf2949bc735c"
+      },
+      "datatables": {
+        "git": "https://github.com/TimHeckel/meteor-datatables.git",
+        "tag": "v0.1.3",
+        "commit": "86a9076d6c65df85b098fd214b0c0ca7a1b10269"
+      },
+      "paginated-subscription": {
+        "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
+        "tag": "v0.1.2",
+        "commit": "35e0c6112df2b4cfeb60b559276a93cac5ee2dd6"
+      },
+      "spin": {
+        "git": "https://github.com/SachaG/meteor-spin.git",
+        "tag": "v0.2.2",
+        "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
+      },
+      "foundation-icons-accessibility": {
+        "git": "https://github.com/IainShigeoka/meteor-foundation-icons-accessibility.git",
+        "tag": "v1.0.1",
+        "commit": "99103ed9989227791cb7819ba2b0da9aab6054b1"
+      },
+      "foundation-icons-gen-enclosed": {
+        "git": "https://github.com/IainShigeoka/meteor-foundation-icons-gen-enclosed.git",
+        "tag": "v1.0.1",
+        "commit": "05e89eea5c377ead581c28a13ac528db92c7fac0"
+      },
+      "foundation-icons-social": {
+        "git": "https://github.com/IainShigeoka/meteor-foundation-icons-social.git",
+        "tag": "v1.0.1",
+        "commit": "c209868d26fd39b4ece777a3c0b010207618042d"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<template name="aboutTemplate">
+	<dl class="sub-nav">
+		<dd{{#if route 'about/history'}} class="active"{{/if}}><a href="/about/history">History</a></dd>
+		<dd{{#if route 'about/rules'}} class="active"{{/if}}><a href="/about/rules">Rules & Regulations</a></dd>
+		<dd{{#if route 'about/photos'}} class="active"{{/if}}><a href="/about/photos">Photos</a></dd>
+		<dd{{#if route 'about/clubs'}} class="active"{{/if}}><a href="/about/clubs">Clubs</a></dd>
+	</dl>
+	<hr>
+	{{yield 'aboutSection'}}
+</template>
+
+<template name="history">
+	<h2>History</h2>
+	{{{this.value}}}
+</template>
+
+<template name="rules">
+	{{{this.value}}}
+</template>
+
+<template name="photos">
+	<h2>Photos</h2>
+	<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+	{{#each photoList}}
+	  <li>
+	  	<a class="th">
+		  	<div style="background-image: url('/photos/{{this.photo}}')" class="thumbnail" data="{{this.index}}">
+		  	</div>
+	  	</a>
+	  </li>
+	{{/each}}
+	</ul>
+</template>
+
+<template name="clubs">
+	<h2>Clubs</h2>
+	{{#each this}}
+		<div class="panel">
+			<h3>{{name}}</h3>
+			<p>{{description}}</p>
+			<h5><a href="{{website}}">Website</a></h5>
+		</div>
+	{{/each}}
+</template>
+
+<template name="photoModal">
+	<div id="photoModal" class="reveal-modal" data-reveal>
+		<i class="general foundicon-left-arrow"></i>
+		<img id="photoBox" />
+		<i class="general foundicon-right-arrow"></i>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+</template>

@@ -1,0 +1,25 @@
+.thumbnail {
+	height: 100px;
+	width: 100%;
+	background-size: cover;
+	background-position: center center;
+	padding: 2px;
+}
+
+.th {
+	width: 100%;
+}
+
+#photoModal {
+	width: auto;
+	left: 50%;
+}
+
+#photoBox {
+	background-size: contain;
+}
+
+#photoModal i, #photoModal .close-reveal-modal {
+	font-size: 40pt;
+	cursor: pointer;
+}
