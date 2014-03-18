@@ -19,12 +19,8 @@ htmljs
 
 npm
 
-foundation-icons
-foundation-icons-accessibility
-foundation-icons-gen-enclosed
-foundation-icons-social
-foundation-icons-general
 
 datatables
 
 iron-router-progress
+foundation-icons-general
