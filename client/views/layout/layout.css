@@ -12,6 +12,7 @@ body {
 	background: #ffffff url('/summerleaguecropped2monochrome.png') no-repeat center center;
 	background-size: cover;
     margin-bottom: 1em;
+    position: relative;
 }
 
 #headerPic h1 {
@@ -20,7 +21,7 @@ body {
 	left: 50%;
 	right: 50%;
 	position: absolute;
-	top: 8vh;
+	top: 3vh;
 	font-family: 'Faster One', sans-serif !important;
     padding-left: 2em ;
     text-indent: -2em ;
