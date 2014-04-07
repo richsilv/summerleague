@@ -39,3 +39,22 @@ body {
     background-color : #64bf1a;
     box-shadow       : 0 0 5px #64bf1a;
 }
+
+@media only screen and (max-width: 40em) {
+
+#headerPic h1 {
+	font-size: 4em;
+	width: 100px;
+	margin-left: -170px;
+	left: 50%;
+	right: 50%;
+	position: absolute;
+	top: 5vh;
+	line-height: 150%;
+	font-family: 'Faster One', sans-serif !important;
+    padding-left: 1em ;
+    text-indent: -1em ;
+    font-weight: bold;
+}
+
+}

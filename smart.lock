@@ -16,13 +16,13 @@
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.2",
-        "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
       },
       "houston": {
-        "git": "https://github.com/gterrono/meteor-admin-ui.git",
-        "tag": "v1.0.0",
-        "commit": "e98660af09cb3e4e90848abfe943a06e7068cccc"
+        "git": "https://github.com/gterrono/houston.git",
+        "tag": "v1.0.2",
+        "commit": "c9af02ec7b52b5ea061a36d260386aa25644507d"
       },
       "smart-collections": {
         "git": "https://github.com/arunoda/meteor-smart-collections.git",
@@ -31,8 +31,8 @@
       },
       "zurb-foundation": {
         "git": "https://github.com/MixinLabs/meteor-foundation.git",
-        "tag": "v0.1.10",
-        "commit": "545234bc38f7a747a5d69b48f75c5cc77ca8382f"
+        "tag": "v0.2.0",
+        "commit": "2fc8ecfe2756e178140aae281141c8e56f1c2606"
       },
       "leaflet": {
         "git": "https://github.com/bevanhunt/meteor-leaflet.git",
@@ -63,6 +63,11 @@
         "git": "https://github.com/TimHeckel/meteor-datatables.git",
         "tag": "v0.1.3",
         "commit": "86a9076d6c65df85b098fd214b0c0ca7a1b10269"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",

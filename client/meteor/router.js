@@ -8,46 +8,28 @@ Router.map(function () {
   this.route('main', {
     path: '/',
 
-    load: function () {
-      // called on first load
-    },
-
     waitOn: function () {
       return Meteor.subscribe('fixtures');
     },
 
-    // before hooks are run before your action
-    before: [
-/*      function () {
-        this.subscribe('post', this.params._id).wait();
-        this.subscribe('posts'); // don't wait
-      },*/
+    data: function() {
+      return {latestNews: News.find({}, {sort: {dateTime: -1}, limit: 3})};
+    },
 
-/*      function () {
-        // we're done waiting on all subs
-        if (this.ready()) {
-          NProgress.done(); 
-        } else {
-          NProgress.start();
-          this.stop(); // stop downstream funcs from running
-        }
-      }*/
-    ],
+    yieldTemplates: {
+      'main': {to: 'mainYield'},
+      'sideBar': {to: 'sideBar'},
+      'mainSection': {to: 'mainSection'}
+    }
 
-    action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
+/*    action: function () {
 
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
       this.render('sideBar', {to: 'sideBar'});
       this.render('mainSection', {to: 'mainSection'});  
-    },
+    }*/
 
-    unload: function () {
-      // before a new route is run
-    }
   });
 
   // ******************************************************************
@@ -76,9 +58,6 @@ Router.map(function () {
     },
 
     action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
 
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
@@ -100,9 +79,6 @@ Router.map(function () {
     },
 
     action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
 
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
@@ -116,9 +92,6 @@ Router.map(function () {
     path: '/about/photos',
 
     action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
 
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
@@ -136,9 +109,6 @@ Router.map(function () {
     },
 
     action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
 
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
@@ -154,13 +124,10 @@ Router.map(function () {
     path: '/news',
 
     data: function() {
-      return News.find({}, {sort: {dateTime: -1}, limit: 5});
+      return News.find({}, {sort: {dateTime: -1}, limit: 10});
     },
 
     action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
 
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
@@ -179,9 +146,6 @@ Router.map(function () {
     },
 
     action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
 
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
@@ -211,9 +175,6 @@ Router.map(function () {
     },
 
     action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
 
       this.render(); // render all
       this.render('resultsTable', {to: 'mainYield'});

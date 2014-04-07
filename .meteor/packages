@@ -5,10 +5,7 @@
 
 standard-app-packages
 insecure
-preserve-inputs
 
-iron-router
-houston
 paginated-subscription
 spin
 zurb-foundation
@@ -23,3 +20,7 @@ npm
 datatables
 
 foundation-icons-general
+houston
+
+blaze-layout
+iron-router

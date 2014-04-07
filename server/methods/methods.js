@@ -2,7 +2,8 @@ fs = Meteor.require('fs');
 
 Meteor.methods({
 	getGPX: function(filename) {
-		return Assets.getText(filename);
+		if (filename)
+			return Assets.getText(filename);
 	},
 	getPhotos: function() {
 	    var files = fs.readdirSync('./../client/app/photos').map(function(f) {

@@ -8,7 +8,6 @@ Template.fixturesTemplate.helpers({
 		}});
 	},
 	currentFixture: function() {
-		console.log(this);
 	}
 })
 
@@ -28,10 +27,6 @@ Template.fixtureData.rendered = function() {
 		}),
 		mapCenter = this.data.mapCenter,
 		mapZoom = this.data.mapZoom;
-/*    window.resize(this);
-    $(window).resize(function() {
-      return window.resize(_this);
-    });*/
 	if (window.map) {
 		window.map.remove();
 		$('#map').remove();
@@ -40,7 +35,7 @@ Template.fixtureData.rendered = function() {
     L.Icon.Default.imagePath = 'packages/leaflet/images';
 	window.map = L.map('map', {
   		doubleClickZoom: false
-	}).setView(mapCenter, mapZoom);
+	});
 	OpenStreetMap_HOT.addTo(window.map);
 	addGPX(this.data.gpx);
 };

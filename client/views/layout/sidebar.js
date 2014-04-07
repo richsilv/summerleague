@@ -6,7 +6,10 @@ Template.fixtureSummary.helpers({
 		return Fixtures.find({}, {sort: {dateTime: 1}});
 	},
 	dateTimeFormatted: function() {
-		return moment(this.dateTime).format(" h:mm a, D MMM YY");
+		if (this.dateTime instanceof Date)
+			return moment(this.dateTime).format(" h:mm a, D MMM YY");
+		else
+			return "TBC";
 	}
 });
 

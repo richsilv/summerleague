@@ -1,14 +1,14 @@
 var keys = [['Race', 'Race'],
             ['Pos', 'Pos'],
-            ['Surname', 'Surname'],
-            ['Forename', 'Forename'],
+            ['Last Name', 'Last Name'],
+            ['First Name', 'First Name'],
             ['Club', 'Club'],
             ['Gender', 'Gender'],
-            ['GenderPos', 'Gen Pos'],
-            ['Category', 'Category'],
-            ['CategoryPos', 'Cat Pos'],
-            ['Gun Time', 'Gun Time'],
-            ['Chip Time', 'Chip Time']];
+            ['Cat', 'Cat'],
+            ['Date', 'Date'],
+            ['Distance', 'Distance'],
+            ['Time', 'Time'],
+            ['Age Grade', 'Age Grade']];
 
 Template.resultsTable.rendered = function() {
 //  var tableCB = Meteor.setInterval(function() {

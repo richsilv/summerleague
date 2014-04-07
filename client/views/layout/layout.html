@@ -19,26 +19,46 @@
 			<section class="top-bar-section">
 				<!-- Right Nav Section -->
 				<ul class="right">
-					<li{{#if route1 'main'}} class="active"{{/if}}><a href="/">Home</a></li>
-					<li{{#if route1 'about'}} class="active"{{/if}}><a href="/about">About</a></li>
-					<li{{#if route1 'news'}} class="active"{{/if}}><a href="/news">News</a></li>
-					<li{{#if route1 'fixtureSpecific'}} class="active"{{/if}}><a href="/fixtures">Fixtures</a></li>
-					<li{{#if route1 'results'}} class="active"{{/if}}><a href="/results">Results</a></li>
+				{{#if route1 'main'}}
+					<li class="active"><a href="/">Home</a></li>
+				{{else}}
+					<li><a href="/">Home</a></li>
+				{{/if}}
+				{{#if route1 'about'}}
+					<li class="active"><a href="/about">About</a></li>
+				{{else}}
+					<li><a href="/about">About</a></li>
+				{{/if}}
+				{{#if route1 'news'}}
+					<li class="active"><a href="/news">News</a></li>
+				{{else}}
+					<li><a href="/news">News</a></li>
+				{{/if}}
+				{{#if route1 'fixtureSpecific'}}
+					<li class="active"><a href="/fixtures">Fixtures</a></li>
+				{{else}}
+					<li><a href="/fixtures">Fixtures</a></li>
+				{{/if}}
+				{{#if route1 'results'}}
+					<li class="active"><a href="/results">Results</a></li>
+				{{else}}
+					<li><a href="/results">Results</a></li>
+				{{/if}}
 				</ul>
 			</section>
 
 		</nav>
 		{{> headerPic}}		
-		{{yield 'mainYield'}}
+		{{> yield region='mainYield'}}
 	</div>
 </template>
 
 <template name="main">
 	<div class="medium-3 show-for-medium-up columns summerSideBar">
-		{{yield 'sideBar'}}
+		{{> yield region='sideBar'}}
 	</div>
 	<div class="medium-9 small-12 columns">
-		{{yield 'mainSection'}}
+		{{> yield region='mainSection'}}
 	</div>
 </template>
 
