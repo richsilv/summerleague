@@ -20,6 +20,7 @@ Template.fixtureData.helpers({
 });
 
 Template.fixtureData.rendered = function() {
+	console.log(this.data);
     var query,
       	_this = this,
       	OpenStreetMap_HOT = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -31,7 +32,7 @@ Template.fixtureData.rendered = function() {
 		window.map.remove();
 		$('#map').remove();
 	}
-	document.querySelector('#mapHolder').appendChild(DIV({id: 'map'}));
+	UI.materialize(HTML.DIV({id: 'map'}), $('#mapHolder')[0]);
     L.Icon.Default.imagePath = 'packages/leaflet/images';
 	window.map = L.map('map', {
   		doubleClickZoom: false

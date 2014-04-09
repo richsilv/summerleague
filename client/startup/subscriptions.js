@@ -1,4 +1,6 @@
-Meteor.subscribe('fixtures');
-Meteor.subscribe('clubs');
-Meteor.subscribe('staticdata');
-Meteor.subscribe('news');
+Subs = {
+	fixtures: Meteor.subscribe('fixtures'),
+	clubs: Meteor.subscribe('clubs'),
+	staticdata: Meteor.subscribe('staticdata'),
+	news: Meteor.subscribe('news')
+}

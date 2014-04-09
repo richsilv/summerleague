@@ -16,9 +16,9 @@ Template.photos.helpers({
 Template.photos.events({
 	'click .thumbnail': function(event) {
 		var thisPhoto = photoList.photos[event.target.attributes.data.value],
-			frag = Spark.render(Template.photoModal);
-		frag.querySelector('#photoBox').src = '/photos/' + thisPhoto;
-		document.body.appendChild(frag);
+			frag = UI.renderWithData(Template.photoModal, {src: '/photos/' + thisPhoto});
+		UI.insert(frag, document.body);
+		$(document).foundation();
 		$('#photoModal').foundation('reveal', 'open');
 		$(document).on('closed', '[data-reveal]', function () {
   			$(this).remove();

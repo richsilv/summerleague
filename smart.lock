@@ -5,7 +5,6 @@
       "iron-router": {},
       "houston": {},
       "smart-collections": {},
-      "zurb-foundation": {},
       "leaflet": {},
       "moment": {},
       "npm": {},
@@ -28,11 +27,6 @@
         "git": "https://github.com/arunoda/meteor-smart-collections.git",
         "tag": "v0.4.0",
         "commit": "da25a5e88c3b5e3c1cb3bd44fd7fdc3234448526"
-      },
-      "zurb-foundation": {
-        "git": "https://github.com/MixinLabs/meteor-foundation.git",
-        "tag": "v0.2.0",
-        "commit": "2fc8ecfe2756e178140aae281141c8e56f1c2606"
       },
       "leaflet": {
         "git": "https://github.com/bevanhunt/meteor-leaflet.git",

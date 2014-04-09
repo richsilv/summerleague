@@ -9,37 +9,30 @@
 <template name="mainLayout">
 	<div class= "row" id="wrapper">
 		<nav class="top-bar" data-topbar>
-<!-- 			<ul class="title-area">
-				<li class="name">
-				<h1><a href="#">Summer League</a></h1>
-				</li>
-				<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-			</ul> -->
 
 			<section class="top-bar-section">
-				<!-- Right Nav Section -->
 				<ul class="right">
-				{{#if route1 'main'}}
+				{{#if route 'main'}}
 					<li class="active"><a href="/">Home</a></li>
 				{{else}}
 					<li><a href="/">Home</a></li>
 				{{/if}}
-				{{#if route1 'about'}}
+				{{#if route 'about'}}
 					<li class="active"><a href="/about">About</a></li>
 				{{else}}
 					<li><a href="/about">About</a></li>
 				{{/if}}
-				{{#if route1 'news'}}
+				{{#if route 'news'}}
 					<li class="active"><a href="/news">News</a></li>
 				{{else}}
 					<li><a href="/news">News</a></li>
 				{{/if}}
-				{{#if route1 'fixtureSpecific'}}
+				{{#if route 'fixtureSpecific'}}
 					<li class="active"><a href="/fixtures">Fixtures</a></li>
 				{{else}}
 					<li><a href="/fixtures">Fixtures</a></li>
 				{{/if}}
-				{{#if route1 'results'}}
+				{{#if route 'results'}}
 					<li class="active"><a href="/results">Results</a></li>
 				{{else}}
 					<li><a href="/results">Results</a></li>

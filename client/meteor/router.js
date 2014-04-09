@@ -141,17 +141,22 @@ Router.map(function () {
   this.route('fixtureSpecific', {
     path: '/fixtures/:url',
 
+    waitOn: function() {
+      return Subs.fixtures;
+    },
+
     data: function() {
       return Fixtures.findOne({url: this.params.url});
     },
 
     action: function () {
-
       this.render(); // render all
       this.render('main', {to: 'mainYield'});
       this.render('sideBar', {to: 'sideBar'});
-      this.render('fixturesTemplate', {to: 'mainSection'});
-      this.render('fixtureData', {to: 'fixtureSection'});
+      if (this.ready()) {
+        this.render('fixturesTemplate', {to: 'mainSection'});
+        this.render('fixtureData', {to: 'fixtureSection'});
+      }
     }
   });
 

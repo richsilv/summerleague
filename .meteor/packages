@@ -8,7 +8,6 @@ insecure
 
 paginated-subscription
 spin
-zurb-foundation
 
 leaflet
 moment
@@ -24,3 +23,4 @@ houston
 
 blaze-layout
 iron-router
+zurb-foundation
