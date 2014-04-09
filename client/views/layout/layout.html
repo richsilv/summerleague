@@ -8,9 +8,17 @@
 
 <template name="mainLayout">
 	<div class= "row" id="wrapper">
-		<nav class="top-bar" data-topbar>
+		<nav class="top-bar" data-topbar id="top-bar">
+
+			<ul class="title-area">
+		    	<li class="name"></li>
+				<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+			</ul>
 
 			<section class="top-bar-section">
+				
+
+
 				<ul class="right">
 				{{#if route 'main'}}
 					<li class="active"><a href="/">Home</a></li>

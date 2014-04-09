@@ -15,18 +15,20 @@ Template.fixtureSummary.helpers({
 
 Template.photoSelection.helpers({
 	photoSelection: function() {
-		return sidebarPhotoList.slice(0, 3); 
+		sidebarPhotoFlag.depend();
+		return sidebarPhotoList.slice(0, 3);
 	}
 });
 
-// ******************************
-
-Deps.autorun(function() {
-	sidebarPhotoFlag.depend();
+Template.photoSelection.created = function() {
 	Meteor.call('getPhotos', function(err, res) {
-		if (!err)
+		if (!err) {
 			sidebarPhotoList = res;
+			sidebarPhotoFlag.changed();
+		}
 		else
 			console.log(err);
 	});
-});
+};
+
+// ******************************

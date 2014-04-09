@@ -13,6 +13,8 @@
 #photoModal {
 	width: auto;
 	left: 50%;
+	height: auto;
+	min-height: initial;
 }
 
 #photoBox {

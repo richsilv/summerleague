@@ -1,3 +1,5 @@
+var mapComputation;
+
 Template.fixturesTemplate.helpers({
 	fixtures: function() {
 		var currentId = this._id;
@@ -20,28 +22,18 @@ Template.fixtureData.helpers({
 });
 
 Template.fixtureData.rendered = function() {
-	console.log(this.data);
-    var query,
-      	_this = this,
-      	OpenStreetMap_HOT = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
-		}),
-		mapCenter = this.data.mapCenter,
-		mapZoom = this.data.mapZoom;
-	if (window.map) {
-		window.map.remove();
-		$('#map').remove();
-	}
-	UI.materialize(HTML.DIV({id: 'map'}), $('#mapHolder')[0]);
-    L.Icon.Default.imagePath = 'packages/leaflet/images';
-	window.map = L.map('map', {
-  		doubleClickZoom: false
+	mapComputation = Deps.autorun(function() {
+		mapRender(Router.current().data());
 	});
-	OpenStreetMap_HOT.addTo(window.map);
-	addGPX(this.data.gpx);
 };
 
-addGPX = function(filename) {
+Template.fixtureData.destroyed = function() {
+	mapComputation.stop();
+};
+
+// ****************************************
+
+function addGPX(filename) {
 	Meteor.call('getGPX', filename, function(err, res) {
 		if (!err) {
 			window.raceRoute = new L.GPX(res, {
@@ -58,4 +50,24 @@ addGPX = function(filename) {
 		else
 			console.log(err);
 	});
+}
+
+function mapRender(mapDetails) {
+    var query,
+      	OpenStreetMap_HOT = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
+		}),
+		mapCenter = mapDetails.mapCenter,
+		mapZoom = mapDetails.mapZoom;
+	if (window.map) {
+		window.map.remove();
+		$('#map').remove();
+	}
+	UI.materialize(HTML.DIV({id: 'map'}), $('#mapHolder')[0]);
+    L.Icon.Default.imagePath = 'packages/leaflet/images';
+	window.map = L.map('map', {
+  		doubleClickZoom: false
+	});
+	OpenStreetMap_HOT.addTo(window.map);
+	addGPX(mapDetails.gpx);
 }

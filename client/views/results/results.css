@@ -1,0 +1,15 @@
+@media only screen and (max-width: 40em) {
+
+	#resultsTable_wrapper #resultsTable {
+		font-size: 12px !important;
+	}
+
+	#resultsTable_length {
+		visibility: hidden;
+	}
+
+	#resultsTable {
+		width: 100%;
+	}
+
+}

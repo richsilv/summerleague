@@ -4,7 +4,7 @@
 		{{#if activeRace}}
 			<dd class="active"><a href="{{pathFor 'fixtureSpecific'}}">{{this.name}}</a></dd>
 		{{else}}
-			<dd><a href="{{pathFor 'fixtureSpecific'}}">{{this.name}}</a></dd>
+			<dd><a href="{{pathFor 'fixtureSpecific'}}" class="fixtureLink">{{this.name}}</a></dd>
 		{{/if}}
 		{{/each}}
 	</dl>
@@ -15,7 +15,7 @@
 <template name="fixtureData">
 	<h3>{{name}}</h3>
 	<h3 class="subheader">{{dateTimeFormatted}}</h3>
-	<h4>Course Description</h4>
 	<div id="mapHolder"></div>
+	<h4>Course Description</h4>
 	<h5>{{courseDescription}}</h5>
 </template>

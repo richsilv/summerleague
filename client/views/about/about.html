@@ -36,6 +36,7 @@
 
 <template name="photos">
 	<h2>Photos</h2>
+	{{#if photoList}}
 	<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
 	{{#each photoList}}
 	  <li>
@@ -46,6 +47,7 @@
 	  </li>
 	{{/each}}
 	</ul>
+	{{/if}}
 </template>
 
 <template name="clubs">
@@ -61,9 +63,9 @@
 
 <template name="photoModal">
 	<div id="photoModal" class="reveal-modal" data-reveal>
-		<i class="general foundicon-left-arrow"></i>
+		<i class="fi-left-arrow"></i>
 		<img id="photoBox" src={{src}} />
-		<i class="general foundicon-right-arrow"></i>
+		<i class="fi-right-arrow"></i>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 </template>
