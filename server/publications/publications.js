@@ -1,5 +1,5 @@
-Meteor.publish("results", function() {
-	return Results.find();
+Meteor.publish("results", function(filter, limit) {
+	return Results.find(filter, {sort: {'Date': 1, Pos: 1}, limit: limit ? limit : 25});
 });
 
 Meteor.publish("fixtures", function() {

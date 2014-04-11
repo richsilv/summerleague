@@ -22,14 +22,6 @@ Router.map(function () {
       'mainSection': {to: 'mainSection'}
     }
 
-/*    action: function () {
-
-      this.render(); // render all
-      this.render('main', {to: 'mainYield'});
-      this.render('sideBar', {to: 'sideBar'});
-      this.render('mainSection', {to: 'mainSection'});  
-    }*/
-
   });
 
   // ******************************************************************
@@ -42,7 +34,7 @@ Router.map(function () {
     },
 
     action: function () {
-      this.redirect('about/history')
+      this.redirect('about/history');
     }
   });
 
@@ -176,7 +168,7 @@ Router.map(function () {
     path: '/results',
 
     waitOn: function () {
-      return Meteor.subscribe('results');
+      return Meteor.subscribe('results', {});
     },
 
     action: function () {
