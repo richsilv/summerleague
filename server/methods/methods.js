@@ -6,12 +6,25 @@ Meteor.methods({
 			return Assets.getText(filename);
 	},
 	getPhotos: function() {
-	    var files = fs.readdirSync('./../client/app/photos').map(function(f) {
-	    	return f.substr(f.lastIndexOf('/')+1);
-	    });
-	    return files;
+		var files = fs.readdirSync('./../client/app/photos').map(function(f) {
+			return f.substr(f.lastIndexOf('/')+1);
+		});
+		return files;
 	},
 	getCSV: function(filename) {
 		return Assets.getText(filename);
+	},
+	getFilters: function(fieldList) {
+		var results = Results.find().fetch(),
+			fieldInfo = [];
+		for (var i = 0; i < fieldList.length; i++) {
+			var options = [];
+			results.forEach(function(r) {
+				if (options.indexOf(r[fieldList[i]]) === -1) options.push(r[fieldList[i]]);
+			});
+			fieldInfo.push({fieldName: fieldList[i], options: options});
+		}
+		console.log(fieldInfo);
+		return fieldInfo;
 	}	
 });

@@ -9,11 +9,11 @@
 	</div>
 	<table>
 		<thead>
-			<tr><th>Race</th><th>Date</th><th>Position</th><th>Last Name</th><th>First Name</th><th>Club</th><th>Time</th></tr>
+			<tr><th>Race</th><th>Date</th><th>Position</th><th>First Name</th><th>Last Name</th><th>Category</th><th>Club</th><th>Time</th></tr>
 		</thead>
 		<tbody>
 			{{#each results}}
-			<tr><td>{{Race}}</td><td>{{Date}}</td><td>{{Pos}}</td><td>{{this.[Last Name]}}</td><td>{{this.[First Name]}}</td><td>{{Club}}</td><td>{{Time}}</td></tr>
+			<tr><td>{{Race}}</td><td>{{Date}}</td><td>{{Pos}}</td><td>{{this.[First Name]}}</td><td>{{this.[Last Name]}}</td><td>{{Cat}}</td><td>{{Club}}</td><td>{{Time}}</td></tr>
 			{{/each}}
 		</tbody>
 	</table>
@@ -21,7 +21,7 @@
 
 <template name="tableControls">
 	{{#each fields}}
-	<a href="#" data-dropdown="{{fieldName}}" class="button dropdown">Dropdown Button</a><br>
+	<a href="#" data-dropdown="{{fieldName}}" class="button dropdown">{{fieldName}}</a><br>
 	<ul id="{{fieldName}}" data-dropdown-content class="f-dropdown">
 	  	{{#each options}}<li><a href="#">{{this}}</a></li>{{/each}}
 	</ul>

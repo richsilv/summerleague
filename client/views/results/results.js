@@ -1,6 +1,6 @@
 var resultsSub,
     filterFields = {
-      fieldInfo: {},
+      fieldInfo: [],
       dep: new Deps.Dependency()
     },
     longKeys = [
@@ -63,19 +63,32 @@ Template.resultsTable.rendered = function() {
  //      });
  //    }
  // }, 250);
+  if (!this.thisRendered) {
+    getFilters();
+    this.thisRendered = true;
+  }
 };
+
+Template.tableControls.helpers({
+  fields: function() {
+    filterFields.dep.depend();
+    return filterFields.fieldInfo;
+  }
+});
 
 function getResults(filter) {
   resultsSub = Meteor.subscribe("results", filter);
 }
 
 function getFilters() {
-  Meteor.call('getFilters', function(err, res) {
+  Meteor.call('getFilters', ['Date', 'Cat', 'Club'], function(err, res) {
     if (err)
       console.log(err);
     else {
       filterFields.fieldInfo = res;
-      ffiterFields.dep.changed();
+      filterFields.dep.changed();
+      Deps.flush();
+      $(document).foundation();
     }
   });
 }
