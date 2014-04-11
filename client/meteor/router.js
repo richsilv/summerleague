@@ -167,9 +167,9 @@ Router.map(function () {
   this.route('results', {
     path: '/results',
 
-    waitOn: function () {
+/*    waitOn: function () {
       return Meteor.subscribe('results', {});
-    },
+    },*/
 
     action: function () {
 

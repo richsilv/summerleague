@@ -24,7 +24,6 @@ Meteor.methods({
 			});
 			fieldInfo.push({fieldName: fieldList[i], options: options});
 		}
-		console.log(fieldInfo);
 		return fieldInfo;
 	}	
 });

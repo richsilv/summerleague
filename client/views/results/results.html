@@ -21,9 +21,11 @@
 
 <template name="tableControls">
 	{{#each fields}}
-	<a href="#" data-dropdown="{{fieldName}}" class="button dropdown">{{fieldName}}</a><br>
-	<ul id="{{fieldName}}" data-dropdown-content class="f-dropdown">
-	  	{{#each options}}<li><a href="#">{{this}}</a></li>{{/each}}
-	</ul>
+	<div class="inline">
+		<a href="#" data-dropdown="{{fieldName}}" class="button dropdown">{{fieldName}}</a><br>
+		<ul id="{{fieldName}}" data-dropdown-content class="f-dropdown">
+		  	{{#each options}}<li><a href="#">{{this}}</a></li>{{/each}}
+		</ul>
+	</div>
 	{{/each}}
 </template>

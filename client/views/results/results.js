@@ -63,10 +63,8 @@ Template.resultsTable.rendered = function() {
  //      });
  //    }
  // }, 250);
-  if (!this.thisRendered) {
-    getFilters();
-    this.thisRendered = true;
-  }
+  getFilters();  
+  resultsSub = Meteor.subscribe("results", {});
 };
 
 Template.tableControls.helpers({
@@ -76,7 +74,16 @@ Template.tableControls.helpers({
   }
 });
 
+Template.tableControls.events({
+  'click .f-dropdown': function(event) {
+    var filter = {};
+    filter[$(event.target).parents('ul').attr('id')] = event.target.innerHTML;
+    getResults(filter);
+  }
+});
+
 function getResults(filter) {
+  resultsSub.stop();
   resultsSub = Meteor.subscribe("results", filter);
 }
 
