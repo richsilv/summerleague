@@ -1,8 +1,14 @@
 var resultsSub,
+    filter = {},
     filterFields = {
       fieldInfo: [],
       dep: new Deps.Dependency()
     },
+    resultsCount = {
+      value: 0,
+      dep: new Deps.Dependency()
+    },
+    skip = 0,
     longKeys = [
       ['Race', 'Race'],
       ['Pos', 'Pos'],
@@ -64,27 +70,61 @@ Template.resultsTable.rendered = function() {
  //    }
  // }, 250);
   getFilters();  
-  resultsSub = Meteor.subscribe("results", {});
+  getResults(filter, skip);
 };
 
 Template.tableControls.helpers({
   fields: function() {
     filterFields.dep.depend();
     return filterFields.fieldInfo;
+  },
+  pages: function() {
+    var pages = [], thisItem;
+    resultsCount.dep.depend();
+    pages.push({class: 'arrow unavailable', content: '&laquo;'});
+    for (var i = 1; i < (resultsCount.value / AppVars.resultLength) + 1; i++) {
+      thisItem = {class: ((skip / AppVars.resultLength) === i - 1) ? 'current number' : 'number', content: i};
+      pages.push(thisItem);
+    }
+    pages.push({class: 'arrow', content: '&raquo;'});
+    return pages;
   }
 });
 
 Template.tableControls.events({
   'click .f-dropdown': function(event) {
-    var filter = {};
-    filter[$(event.target).parents('ul').attr('id')] = event.target.innerHTML;
-    getResults(filter);
+    var jqItem = $(event.target),
+        chosen = _.unescape(jqItem.html()),
+        dropdown = jqItem.parents('.f-dropdown').prevAll('.button.dropdown');
+    if (chosen !== 'All') {
+      dropdown.html(chosen);
+      filter[jqItem.parents('ul').attr('id')] = chosen;
+    }
+    else {
+      dropdown.html(dropdown.attr('default'));
+      delete filter[jqItem.parents('ul').attr('id')];
+    }
+    skip = 0;
+    getResults(filter, skip);
+  },
+  'click .number': function(event) {
+    var pageNum = parseInt($(event.currentTarget).children('a').html(), 10);
+    skip = (pageNum - 1) * AppVars.resultLength;
+    getResults(filter, skip);
   }
 });
 
-function getResults(filter) {
-  resultsSub.stop();
+function getResults(filter, skip) {
+  if (resultsSub) resultsSub.stop();
   resultsSub = Meteor.subscribe("results", filter);
+  Meteor.call('resultsCount', filter, skip, function(err, res) {
+    if (err)
+      console.log(err);
+    else {
+      resultsCount.value = res;
+      resultsCount.dep.changed();
+    }
+  });
 }
 
 function getFilters() {

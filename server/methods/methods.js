@@ -22,8 +22,12 @@ Meteor.methods({
 			results.forEach(function(r) {
 				if (options.indexOf(r[fieldList[i]]) === -1) options.push(r[fieldList[i]]);
 			});
+			options.sort().unshift('All');
 			fieldInfo.push({fieldName: fieldList[i], options: options});
 		}
 		return fieldInfo;
-	}	
+	},
+	resultsCount: function(filter) {
+		return Results.find(filter).count();
+	}
 });

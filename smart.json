@@ -8,6 +8,7 @@
     "npm": {},
     "foundation-icons-general": {},
     "foundation-icons": {},
-    "datatables": {}
+    "datatables": {},
+    "select2": {}
   }
 }

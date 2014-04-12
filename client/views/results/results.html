@@ -22,10 +22,17 @@
 <template name="tableControls">
 	{{#each fields}}
 	<div class="inline">
-		<a href="#" data-dropdown="{{fieldName}}" class="button dropdown">{{fieldName}}</a><br>
+		<a href="#" data-dropdown="{{fieldName}}" class="button dropdown" default={{fieldName}}>{{fieldName}}</a><br>
 		<ul id="{{fieldName}}" data-dropdown-content class="f-dropdown">
 		  	{{#each options}}<li><a href="#">{{this}}</a></li>{{/each}}
 		</ul>
 	</div>
 	{{/each}}
+	<div class="inline">
+		<ul class="pagination">
+			{{#each pages}}
+			<li class={{class}}><a href="">{{{content}}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
 </template>
