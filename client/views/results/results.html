@@ -1,22 +1,24 @@
 <template name="resultsTable">
-	<div id="tableHider">
+<!-- 	<div id="tableHider">
 		<table id="resultsTable" style="visibility: hidden;">
 
 		</table>
-	</div>
+	</div> -->
 	<div id="tableControls">
 		{{> tableControls}}
 	</div>
-	<table>
-		<thead>
-			<tr><th>Race</th><th>Date</th><th>Position</th><th>First Name</th><th>Last Name</th><th>Category</th><th>Club</th><th>Time</th></tr>
-		</thead>
-		<tbody>
-			{{#each results}}
-			<tr><td>{{Race}}</td><td>{{Date}}</td><td>{{Pos}}</td><td>{{this.[First Name]}}</td><td>{{this.[Last Name]}}</td><td>{{Cat}}</td><td>{{Club}}</td><td>{{Time}}</td></tr>
-			{{/each}}
-		</tbody>
-	</table>
+	<div id="tableContainer">
+		<table id="resultsTable">
+			<thead>
+				<tr>{{#unless smallScreen}}<th>Race</th>{{/unless}}<th>Date</th><th>Pos</th><th>First Name</th><th>Last Name</th>{{#unless smallScreen}}<th>Category</th>{{/unless}}<th>Club</th><th>Time</th></tr>
+			</thead>
+			<tbody>
+				{{#each results}}
+				<tr>{{#unless smallScreen}}<td>{{Race}}</td>{{/unless}}<td>{{Date}}</td><td>{{Pos}}</td><td>{{this.[First Name]}}</td><td>{{this.[Last Name]}}</td>{{#unless smallScreen}}<td>{{Cat}}</td>{{/unless}}<td>{{Club}}</td><td>{{Time}}</td></tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </template>
 
 <template name="tableControls">
@@ -28,7 +30,7 @@
 		</ul>
 	</div>
 	{{/each}}
-	<div class="inline">
+	<div class="inline" id="pageBox">
 		<ul class="pagination">
 			{{#each pages}}
 			<li class={{class}}><a href="">{{{content}}}</a></li>

@@ -8,7 +8,6 @@ var resultsSub,
       value: 0,
       dep: new Deps.Dependency()
     },
-    skip = 0,
     longKeys = [
       ['Race', 'Race'],
       ['Pos', 'Pos'],
@@ -30,10 +29,14 @@ var resultsSub,
       ['Club', 'Club'],
       ['Time', 'Time']
     ];
+    skip = 0;
 
 Template.resultsTable.helpers({
   results: function() {
     return Results.find();
+  },
+  smallScreen: function() {
+    return screen.width <= 640;
   }
 });
 
@@ -79,14 +82,23 @@ Template.tableControls.helpers({
     return filterFields.fieldInfo;
   },
   pages: function() {
-    var pages = [], thisItem;
+    var pages = [], thisItem, dotGap = false, lastPage = Math.floor((resultsCount.value / AppVars.resultLength) + 1);
     resultsCount.dep.depend();
-    pages.push({class: 'arrow unavailable', content: '&laquo;'});
-    for (var i = 1; i < (resultsCount.value / AppVars.resultLength) + 1; i++) {
-      thisItem = {class: ((skip / AppVars.resultLength) === i - 1) ? 'current number' : 'number', content: i};
-      pages.push(thisItem);
+    pages.push({class: skip === 0 ? 'arrow unavailable' : 'arrow', content: '&laquo;'});
+    for (var i = 1; i <= lastPage; i++) {
+      if ((Math.abs((skip / AppVars.resultLength) - i + 1) < 2) || (i === 1) || (i === lastPage)) {
+        thisItem = {class: ((skip / AppVars.resultLength) === i - 1) ? 'current number' : 'number', content: i};
+        pages.push(thisItem);
+        dotGap = false;
+      }
+      else {
+        if (!dotGap) {
+          pages.push({class: 'unavailable', content: '&hellip;'});
+          dotGap = true;
+        }
+      }
     }
-    pages.push({class: 'arrow', content: '&raquo;'});
+    pages.push({class: (resultsCount.value - skip) < AppVars.resultLength ? 'arrow unavailable' : 'arrow', content: '&raquo;'});
     return pages;
   }
 });
@@ -116,8 +128,8 @@ Template.tableControls.events({
 
 function getResults(filter, skip) {
   if (resultsSub) resultsSub.stop();
-  resultsSub = Meteor.subscribe("results", filter);
-  Meteor.call('resultsCount', filter, skip, function(err, res) {
+  resultsSub = Meteor.subscribe("results", filter, skip);
+  Meteor.call('resultsCount', filter, function(err, res) {
     if (err)
       console.log(err);
     else {

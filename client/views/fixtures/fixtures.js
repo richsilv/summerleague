@@ -3,7 +3,9 @@ var mapComputation;
 Template.fixturesTemplate.helpers({
 	fixtures: function() {
 		var currentId = this._id;
-		return Fixtures.find({}, {transform:function(doc) {
+		return Fixtures.find({}, {
+			sort: {dateTime: 1},
+			transform: function(doc) {
 		    if (doc._id === currentId)
 		    	doc.activeRace = true;
 			return doc;
@@ -53,16 +55,18 @@ function addGPX(filename) {
 }
 
 function mapRender(mapDetails) {
+	if (window.map) {
+		window.map = null;
+		$('#map').remove();
+	}
+	if (!mapDetails.gpx)
+		return false;
     var query,
       	OpenStreetMap_HOT = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 		}),
 		mapCenter = mapDetails.mapCenter,
 		mapZoom = mapDetails.mapZoom;
-	if (window.map) {
-		window.map.remove();
-		$('#map').remove();
-	}
 	UI.materialize(HTML.DIV({id: 'map'}), $('#mapHolder')[0]);
     L.Icon.Default.imagePath = 'packages/leaflet/images';
 	window.map = L.map('map', {

@@ -1,9 +1,14 @@
 <template name="aboutTemplate">
 	<dl class="sub-nav">
-	{{#if route 'about/history'}}
+<!-- 	{{#if route 'about/history'}}
 		<dd class="active"><a href="/about/history">History</a></dd>
 	{{else}}
 		<dd><a href="/about/history">History</a></dd>
+	{{/if}} -->
+	{{#if route 'about/clubs'}}
+		<dd class="active"><a href="/about/clubs">Clubs</a></dd>
+	{{else}}
+		<dd><a href="/about/clubs">Clubs</a></dd>
 	{{/if}}
 	{{#if route 'about/rules'}}
 		<dd class="active"><a href="/about/rules">Rules & Regulations</a></dd>
@@ -14,11 +19,6 @@
 		<dd class="active"><a href="/about/photos">Photos</a></dd>
 	{{else}}
 		<dd><a href="/about/photos">Photos</a></dd>
-	{{/if}}
-	{{#if route 'about/clubs'}}
-		<dd class="active"><a href="/about/clubs">Clubs</a></dd>
-	{{else}}
-		<dd><a href="/about/clubs">Clubs</a></dd>
 	{{/if}}
 	</dl>
 	<hr>

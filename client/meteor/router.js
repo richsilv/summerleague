@@ -34,7 +34,7 @@ Router.map(function () {
     },
 
     action: function () {
-      this.redirect('about/history');
+      this.redirect('about/clubs');
     }
   });
 

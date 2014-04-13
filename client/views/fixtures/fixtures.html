@@ -2,9 +2,9 @@
 	<dl class="sub-nav">
 		{{#each fixtures}}
 		{{#if activeRace}}
-			<dd class="active"><a href="{{pathFor 'fixtureSpecific'}}">{{this.name}}</a></dd>
+			<dd class="active"><a href="{{pathFor 'fixtureSpecific'}}">{{this.name}}{{#if this.tbc}} (TBC){{/if}}</a></dd>
 		{{else}}
-			<dd><a href="{{pathFor 'fixtureSpecific'}}" class="fixtureLink">{{this.name}}</a></dd>
+			<dd><a href="{{pathFor 'fixtureSpecific'}}" class="fixtureLink">{{this.name}}{{#if this.tbc}} (TBC){{/if}}</a></dd>
 		{{/if}}
 		{{/each}}
 	</dl>
@@ -13,7 +13,7 @@
 </template>
 
 <template name="fixtureData">
-	<h3>{{name}}</h3>
+	<h3>{{name}}{{#if tbc}}<strong> (TBC)</strong>{{/if}}</h3>
 	<h3 class="subheader">{{dateTimeFormatted}}</h3>
 	<div id="mapHolder"></div>
 	<h4>Course Description</h4>

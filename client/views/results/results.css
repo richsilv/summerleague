@@ -2,6 +2,20 @@
 	display: inline-block;
 }
 
+#pageBox {
+	vertical-align: text-top;
+	margin-top: 20px;
+	float: right;
+}
+
+#resultsTable {
+	width: 100%;
+}
+
+#tableContainer {
+	overflow-x: auto;
+}
+
 @media only screen and (max-width: 40em) {
 
 	#resultsTable_wrapper #resultsTable {
@@ -12,7 +26,21 @@
 		visibility: hidden;
 	}
 
-	#resultsTable {
+	#pageBox {
+		margin-top: 0;
+		float: none;
+	}
+
+	#resultsTable td, #resultsTable th {
+		font-size: 0.6em;
+		padding: 0.2rem;
+	}
+
+	.inline {
+		min-width: 48%;
+	}
+
+	.button.dropdown {
 		width: 100%;
 	}
 
