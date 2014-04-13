@@ -84,7 +84,7 @@ Template.tableControls.helpers({
   pages: function() {
     var pages = [], thisItem, dotGap = false, lastPage = Math.floor((resultsCount.value / AppVars.resultLength) + 1);
     resultsCount.dep.depend();
-    pages.push({class: skip === 0 ? 'arrow unavailable' : 'arrow', content: '&laquo;'});
+    pages.push({class: skip === 0 ? 'arrow unavailable' : 'leftHand arrow', content: '&laquo;'});
     for (var i = 1; i <= lastPage; i++) {
       if ((Math.abs((skip / AppVars.resultLength) - i + 1) < 2) || (i === 1) || (i === lastPage)) {
         thisItem = {class: ((skip / AppVars.resultLength) === i - 1) ? 'current number' : 'number', content: i};
@@ -98,7 +98,7 @@ Template.tableControls.helpers({
         }
       }
     }
-    pages.push({class: (resultsCount.value - skip) < AppVars.resultLength ? 'arrow unavailable' : 'arrow', content: '&raquo;'});
+    pages.push({class: (resultsCount.value - skip) < AppVars.resultLength ? 'arrow unavailable' : 'rightHand arrow', content: '&raquo;'});
     return pages;
   }
 });
@@ -123,6 +123,14 @@ Template.tableControls.events({
   'click .number': function(event) {
     var pageNum = parseInt($(event.currentTarget).children('a').html(), 10);
     skip = (pageNum - 1) * AppVars.resultLength;
+    getResults(filter, skip);
+  },
+  'click .leftHand': function() {
+    skip -= AppVars.resultLength;
+    getResults(filter, skip);
+  },
+  'click .rightHand': function() {
+    skip += AppVars.resultLength;
     getResults(filter, skip);
   }
 });
