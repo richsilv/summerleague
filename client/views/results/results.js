@@ -118,6 +118,7 @@ Template.tableControls.events({
     }
     skip = 0;
     getResults(filter, skip);
+    jqItem.parents('.f-dropdown').removeClass('open').css('left', '-99999px');
   },
   'click .number': function(event) {
     var pageNum = parseInt($(event.currentTarget).children('a').html(), 10);
