@@ -14,8 +14,8 @@ Meteor.methods({
 	getCSV: function(filename) {
 		return Assets.getText(filename);
 	},
-	getFilters: function(fieldList) {
-		var results = Results.find().fetch(),
+	getFilters: function(fieldList, filter) {
+		var results = Results.find(filter).fetch(),
 			fieldInfo = [];
 		for (var i = 0; i < fieldList.length; i++) {
 			var options = [];

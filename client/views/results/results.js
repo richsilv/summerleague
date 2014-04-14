@@ -72,7 +72,7 @@ Template.resultsTable.rendered = function() {
  //      });
  //    }
  // }, 250);
-  getFilters();  
+  getFilters(filter);  
   getResults(filter, skip);
 };
 
@@ -117,6 +117,7 @@ Template.tableControls.events({
       delete filter[jqItem.parents('ul').attr('id')];
     }
     skip = 0;
+    getFilters(filter);
     getResults(filter, skip);
     jqItem.parents('.f-dropdown').removeClass('open').css('left', '-99999px');
   },
@@ -148,8 +149,8 @@ function getResults(filter, skip) {
   });
 }
 
-function getFilters() {
-  Meteor.call('getFilters', ['Race', 'Date', 'Cat', 'Club'], function(err, res) {
+function getFilters(filter) {
+  Meteor.call('getFilters', ['Race', 'Date', 'Cat', 'Club'], filter, function(err, res) {
     if (err)
       console.log(err);
     else {
