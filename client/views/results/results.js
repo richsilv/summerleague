@@ -149,7 +149,7 @@ function getResults(filter, skip) {
 }
 
 function getFilters() {
-  Meteor.call('getFilters', ['Date', 'Cat', 'Club'], function(err, res) {
+  Meteor.call('getFilters', ['Race', 'Date', 'Cat', 'Club'], function(err, res) {
     if (err)
       console.log(err);
     else {
