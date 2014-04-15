@@ -1,4 +1,5 @@
 fs = Meteor.require('fs');
+var s3;
 
 Meteor.methods({
 	getGPX: function(filename) {
@@ -29,5 +30,14 @@ Meteor.methods({
 	},
 	resultsCount: function(filter) {
 		return Results.find(filter).count();
+	},
+	connectAWS: function() {
+		AWS.config.update(Meteor.settings.AWS);
+		s3 = new AWS.S3();
+		return s3.endpoint.protocol + '//' + AppVars.AWSBucket + '.' + s3.endpoint.host + '/';
+	},
+	listPhotos: function() {
+		list = s3.listObjectsSync({Bucket: AppVars.AWSBucket, Prefix: 'photos/'});
+		return list;
 	}
 });

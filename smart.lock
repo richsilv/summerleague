@@ -11,7 +11,8 @@
       "foundation-icons-general": {},
       "foundation-icons": {},
       "datatables": {},
-      "select2": {}
+      "select2": {},
+      "aws-sdk": {}
     },
     "packages": {
       "iron-router": {
@@ -64,6 +65,11 @@
         "tag": "v3.4.5",
         "commit": "4a8d05582b949a14f0ee217c185166abbf112822"
       },
+      "aws-sdk": {
+        "git": "https://github.com/peerlibrary/meteor-aws-sdk.git",
+        "tag": "v1.5.1.1",
+        "commit": "63efa4ebbe9986bd875f69d5fdf3248c5c44159e"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.2",
@@ -93,6 +99,11 @@
         "git": "https://github.com/IainShigeoka/meteor-foundation-icons-social.git",
         "tag": "v1.0.1",
         "commit": "c209868d26fd39b4ece777a3c0b010207618042d"
+      },
+      "blocking": {
+        "git": "https://github.com/peerlibrary/meteor-blocking.git",
+        "tag": "v0.4.0",
+        "commit": "e25a0be72e771b317b26d2bb5758c983bdcef23c"
       }
     }
   }

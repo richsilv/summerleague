@@ -1,6 +1,3 @@
-var sidebarPhotoList = [],
-	sidebarPhotoFlag = new Deps.Dependency();
-
 Template.fixtureSummary.helpers({
 	fixtures: function() {
 		return Fixtures.find({}, {sort: {dateTime: 1}});
@@ -15,20 +12,9 @@ Template.fixtureSummary.helpers({
 
 Template.photoSelection.helpers({
 	photoSelection: function() {
-		sidebarPhotoFlag.depend();
-		return sidebarPhotoList.slice(0, 3);
+		AppVars.Photos.dep.depend();
+		return AppVars.Photos.photoList.slice(0,3);
 	}
 });
-
-Template.photoSelection.created = function() {
-	Meteor.call('getPhotos', function(err, res) {
-		if (!err) {
-			sidebarPhotoList = res;
-			sidebarPhotoFlag.changed();
-		}
-		else
-			console.log(err);
-	});
-};
 
 // ******************************

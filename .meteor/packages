@@ -23,3 +23,6 @@ blaze-layout
 iron-router
 zurb-foundation
 select2
+
+aws-sdk
+blocking
