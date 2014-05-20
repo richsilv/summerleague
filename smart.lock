@@ -12,18 +12,19 @@
       "foundation-icons": {},
       "datatables": {},
       "select2": {},
-      "aws-sdk": {}
+      "aws-sdk": {},
+      "modernizr-meteor": {}
     },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.7.0",
-        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
+        "tag": "v0.7.1",
+        "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
       },
       "houston": {
         "git": "https://github.com/gterrono/houston.git",
-        "tag": "v1.0.2",
-        "commit": "c9af02ec7b52b5ea061a36d260386aa25644507d"
+        "tag": "v1.0.4",
+        "commit": "e76bda40587ac80ce51ee417047be8272664625c"
       },
       "smart-collections": {
         "git": "https://github.com/arunoda/meteor-smart-collections.git",
@@ -37,8 +38,8 @@
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
-        "tag": "v2.5.1",
-        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+        "tag": "v2.6.0",
+        "commit": "26156df681750fd6e6ed77043eef32b6653ebbdf"
       },
       "npm": {
         "git": "https://github.com/arunoda/meteor-npm.git",
@@ -70,15 +71,20 @@
         "tag": "v1.5.1.1",
         "commit": "63efa4ebbe9986bd875f69d5fdf3248c5c44159e"
       },
+      "modernizr-meteor": {
+        "git": "https://github.com/ckir/modernizr-meteor.git",
+        "tag": "v2.6.2",
+        "commit": "391ca2a3beff3cd2b0e1099cb2d744b5a2e8a73e"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
-        "tag": "v0.2.2",
-        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
+        "tag": "v0.2.4",
+        "commit": "b40e9b0612329288d75cf52ad14a7da64bb8618f"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
-        "tag": "v0.1.2",
-        "commit": "35e0c6112df2b4cfeb60b559276a93cac5ee2dd6"
+        "tag": "v0.2.2",
+        "commit": "2133a2163575f569f90253f81314f21b2bf08d20"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",

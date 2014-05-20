@@ -10,6 +10,7 @@
     "foundation-icons": {},
     "datatables": {},
     "select2": {},
-    "aws-sdk": {}
+    "aws-sdk": {},
+    "modernizr-meteor": {}
   }
 }
