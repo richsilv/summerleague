@@ -35,7 +35,7 @@ Template.fixtureData.destroyed = function() {
 
 // ****************************************
 
-function addGPX(filename) {
+function addGPX(filename, callback) {
 	Meteor.call('getGPX', filename, function(err, res) {
 		if (!err) {
 			window.raceRoute = new L.GPX(res, {
@@ -47,6 +47,7 @@ function addGPX(filename) {
   				}
 			}).on('loaded', function(e) {
 		 		window.map.fitBounds(e.target.getBounds());
+		 		callback && callback.apply(this, arguments);
 			}).addTo(window.map);
 		}
 		else
@@ -72,9 +73,18 @@ function mapRender(mapDetails) {
 	window.map = L.map('map', {
   		doubleClickZoom: false
 	});
-	for (marker in mapDetails.markers) {
-		L.marker(marker.LatLng, marker.options).addTo(window.map);
-	}
 	OpenStreetMap_HOT.addTo(window.map);
-	addGPX(mapDetails.gpx);
+	addGPX(mapDetails.gpx, function() {
+		_.each(mapDetails.markers, function(marker) {
+			console.log(marker);
+			L.marker(marker.LatLng, {
+				icon: L.icon({
+					iconUrl: marker.options.icon,
+					iconSize: [32, 37],
+					iconAnchor: [16, 37]
+				}),
+				title: marker.options.title
+			}).addTo(window.map);
+		});		
+	});
 }
