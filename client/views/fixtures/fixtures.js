@@ -72,6 +72,9 @@ function mapRender(mapDetails) {
 	window.map = L.map('map', {
   		doubleClickZoom: false
 	});
+	for (marker in mapDetails.markers) {
+		L.marker(marker.LatLng, marker.options).addTo(window.map);
+	}
 	OpenStreetMap_HOT.addTo(window.map);
 	addGPX(mapDetails.gpx);
 }
