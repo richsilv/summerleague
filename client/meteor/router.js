@@ -171,11 +171,23 @@ Router.map(function () {
       return Meteor.subscribe('results', {});
     },*/
 
-    action: function () {
 
+
+    action: function () {
+      filter = _.pick(this.params, ['Race', 'Date', 'Cat', 'Club']);
+      filterFields = {
+        fieldInfo: [],
+        dep: new Deps.Dependency()
+      };
+      resultsCount = {
+        value: 0,
+        dep: new Deps.Dependency()
+      };
+      skip = 0;
       this.render(); // render all
       this.render('resultsTable', {to: 'mainYield'});
     }
+
   });
 
 });

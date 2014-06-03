@@ -1,13 +1,4 @@
 var resultsSub,
-    filter = {},
-    filterFields = {
-      fieldInfo: [],
-      dep: new Deps.Dependency()
-    },
-    resultsCount = {
-      value: 0,
-      dep: new Deps.Dependency()
-    },
     longKeys = [
       ['Race', 'Race'],
       ['Pos', 'Pos'],
@@ -29,7 +20,6 @@ var resultsSub,
       ['Club', 'Club'],
       ['Time', 'Time']
     ];
-    skip = 0;
 
 Template.resultsTable.helpers({
   results: function() {
@@ -81,6 +71,10 @@ Template.tableControls.helpers({
     filterFields.dep.depend();
     return filterFields.fieldInfo;
   },
+  currentChoice: function() {
+    if (this.options.length < 3) return this.options[1];
+    else return this.fieldName;
+  },
   pages: function() {
     var pages = [], thisItem, dotGap = false, lastPage = Math.floor((resultsCount.value / AppVars.resultLength) + 1);
     resultsCount.dep.depend();
@@ -109,11 +103,9 @@ Template.tableControls.events({
         chosen = _.unescape(jqItem.html()),
         dropdown = jqItem.parents('.f-dropdown').prevAll('.button.dropdown');
     if (chosen !== 'All') {
-      dropdown.html(chosen);
       filter[jqItem.parents('ul').attr('id')] = chosen;
     }
     else {
-      dropdown.html(dropdown.attr('default'));
       delete filter[jqItem.parents('ul').attr('id')];
     }
     skip = 0;
@@ -136,7 +128,7 @@ Template.tableControls.events({
   }
 });
 
-function getResults(filter, skip) {
+getResults = function(filter, skip) {
   if (resultsSub) resultsSub.stop();
   resultsSub = Meteor.subscribe("results", filter, skip);
   Meteor.call('resultsCount', filter, function(err, res) {
@@ -149,7 +141,7 @@ function getResults(filter, skip) {
   });
 }
 
-function getFilters(filter) {
+getFilters = function(filter) {
   Meteor.call('getFilters', ['Race', 'Date', 'Cat', 'Club'], filter, function(err, res) {
     if (err)
       console.log(err);

@@ -11,6 +11,7 @@
     "datatables": {},
     "select2": {},
     "aws-sdk": {},
-    "modernizr-meteor": {}
+    "modernizr-meteor": {},
+    "zurb-foundation": {}
   }
 }

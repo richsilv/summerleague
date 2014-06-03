@@ -14,11 +14,11 @@ CSVtoJSON = function(data, raceName) {
 			var d = l.split(','),
 				e = {};
 			d.forEach(function(x, i) {
-				e[headers[i]] = x;
+				e[headers[i]] = (headers[i] === 'Pos') ? parseInt(x, 10) : x;
 			});
 			if (raceName)
 				e.Race = raceName;
-			return e;
+			return e.Pos ? e : null;
 		});
 	return results
 }

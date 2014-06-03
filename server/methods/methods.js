@@ -39,5 +39,14 @@ Meteor.methods({
 	listPhotos: function() {
 		list = s3.listObjectsSync({Bucket: AppVars.AWSBucket, Prefix: 'photos/'});
 		return list;
+	},
+	insertResults: function(results, password) {
+		if (password !== SecureData.findOne({name: "password"}).value) return false;
+		if (typeof results === "string") {
+		}
+		else {
+			_.each(results, function(res) {Results.insert(res);});
+			return true;
+		}
 	}
 });

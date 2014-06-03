@@ -13,7 +13,8 @@
       "datatables": {},
       "select2": {},
       "aws-sdk": {},
-      "modernizr-meteor": {}
+      "modernizr-meteor": {},
+      "zurb-foundation": {}
     },
     "packages": {
       "iron-router": {
@@ -33,8 +34,8 @@
       },
       "leaflet": {
         "git": "https://github.com/bevanhunt/meteor-leaflet.git",
-        "tag": "v0.3.6",
-        "commit": "d9e3bdb824145c1078e52945909bb1cf38724da5"
+        "tag": "v0.3.8",
+        "commit": "84caaa2e8aac1c7f7b585a6b64163a1de406add4"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -75,6 +76,11 @@
         "git": "https://github.com/ckir/modernizr-meteor.git",
         "tag": "v2.6.2",
         "commit": "391ca2a3beff3cd2b0e1099cb2d744b5a2e8a73e"
+      },
+      "zurb-foundation": {
+        "git": "https://github.com/MixinLabs/meteor-foundation.git",
+        "tag": "v5.2.2-0.0.1",
+        "commit": "afe432020cc6246fa0a243a6d2e1e031f08d98e3"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
