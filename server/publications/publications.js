@@ -17,3 +17,7 @@ Meteor.publish("staticdata", function() {
 Meteor.publish("news", function() {
 	return News.find();
 });
+
+Meteor.publish("table", function() {
+	return Table.find();
+});

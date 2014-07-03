@@ -13,11 +13,16 @@
 </template>
 
 <template name="tableSummary">
-{{#if leagueTable}}
 	<div class="tableSummary">
-		League Table coming soon!
+		<table>
+			<thead><tr><th>Club</th><th>Points</th></tr></thead>
+			<tbody>
+			{{#each tableEntry}}
+				<tr><td>{{club}}</td><td>{{score}}</td></tr>
+			{{/each}}
+			</tbody>
+		</table>
 	</div>
-{{/if}}
 </template>
 
 <template name="fixtureSummary">

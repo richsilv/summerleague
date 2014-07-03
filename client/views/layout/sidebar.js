@@ -1,3 +1,9 @@
+Template.tableSummary.helpers({
+	tableEntry: function() {
+		return Table.find({}, {sort: {score: -1}});
+	}
+});
+
 Template.fixtureSummary.helpers({
 	fixtures: function() {
 		return Fixtures.find({}, {sort: {dateTime: 1}});

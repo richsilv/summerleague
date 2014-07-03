@@ -18,8 +18,10 @@
 
 .tableSummary {
 	width: 100%;
-	height: 300px;
-	border: 1px solid grey;
+	font-size: 0.8em;	
 	text-align: center;
-	padding-top: 100px;
+}
+
+.tableSummary table td {
+	font-size: 0.9em;
 }
