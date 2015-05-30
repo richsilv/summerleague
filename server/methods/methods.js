@@ -52,7 +52,7 @@ Meteor.methods({
 		return fut.wait();
 	},
 	insertResults: function(results, password) {
-		if (password !== SecureData.findOne({name: "password"}).value) return false;
+		if (password !== Meteor.settings.password) return false;
 		if (typeof results === "string") {
 		}
 		else {
