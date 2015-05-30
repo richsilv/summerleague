@@ -24,7 +24,7 @@ Template.fixtureData.helpers({
 });
 
 Template.fixtureData.rendered = function() {
-	mapComputation = Deps.autorun(function() {
+	mapComputation = Tracker.autorun(function() {
 		mapRender(Router.current().data());
 	});
 };
@@ -36,7 +36,7 @@ Template.fixtureData.destroyed = function() {
 // ****************************************
 
 function addGPX(filename, callback) {
-	Meteor.call('getGPX', filename, function(err, res) {
+	Meteor.call('getGPXS3', filename, function(err, res) {
 		if (!err) {
 			window.raceRoute = new L.GPX(res, {
 				async: true,
@@ -77,7 +77,6 @@ function mapRender(mapDetails) {
 	OpenStreetMap_HOT.addTo(window.map);
 	addGPX(mapDetails.gpx, function() {
 		_.each(mapDetails.markers, function(marker) {
-			console.log(marker);
 			L.marker(marker.LatLng, {
 				icon: L.icon({
 					iconUrl: marker.options.icon,

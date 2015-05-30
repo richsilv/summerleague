@@ -3,4 +3,6 @@ Meteor.startup(function() {
 		accessKeyId: SecureData.findOne({name: 'AWSAccessKeyId'}).value,
 		secretAccessKey: SecureData.findOne({name: 'AWSSecretKey'}).value
 	};
+
+	Meteor.call('connectAWS');
 });

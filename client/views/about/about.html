@@ -36,18 +36,22 @@
 
 <template name="photos">
 	<h2>Photos</h2>
-	{{#if photoList}}
-	<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
-	{{#each photoList}}
-	  <li>
-	  	<a class="th">
-		  	<div style="background-image: url('{{this.photo}}')" class="thumbnail" data="{{this.photo}}">
-		  	</div>
-	  	</a>
-	  </li>
-	{{/each}}
-	</ul>
-	{{/if}}
+	<div id="links">
+		{{#each photoList}}
+    <a href="{{this.photo}}">
+      <div class="thumbnail" style="background-image: url('http://cdn.filter.to/200x150/{{stripProtocol this.photo}}');"></div>
+    </a>
+		{{/each}}
+	</div>
+	<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+	</div>
 </template>
 
 <template name="clubs">

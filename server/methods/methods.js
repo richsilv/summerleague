@@ -1,5 +1,5 @@
-fs = Meteor.npmRequire('fs');
-var s3;
+var fs = Meteor.npmRequire('fs'),
+		Future = Npm.require('fibers/future');
 
 Meteor.methods({
 	getGPX: function(filename) {
@@ -37,8 +37,19 @@ Meteor.methods({
 		return s3.endpoint.protocol + '//' + AppVars.AWSBucket + '.' + s3.endpoint.host + '/';
 	},
 	listPhotos: function() {
-		list = s3.listObjectsSync({Bucket: AppVars.AWSBucket, Prefix: 'photos/'});
+		var list = s3.listObjectsSync({Bucket: AppVars.AWSBucket, Prefix: 'photos/'});
 		return list;
+	},
+	getGPXS3: function(filename) {
+		var fut = new Future();
+		if (filename)
+			s3.getObject({ Bucket: AppVars.AWSBucket, Key: 'gpx/' + filename }, function(err, data) {
+	    	if (!err)
+	        fut.return(data.Body.toString());
+				else throw new Meteor.Error(err);
+			});
+		else fut.return(null);
+		return fut.wait();
 	},
 	insertResults: function(results, password) {
 		if (password !== SecureData.findOne({name: "password"}).value) return false;

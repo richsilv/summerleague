@@ -6,20 +6,12 @@ Template.photos.helpers({
 });
 
 Template.photos.events({
-	'click .thumbnail': function(event) {
-		var thisPhoto = event.target.attributes.data.value,
-			frag = UI.renderWithData(Template.photoModal, {src: thisPhoto});
-		UI.insert(frag, document.body);
-		$(document).foundation();
-		$(document).on('closed', '[data-reveal]', function () {
-  			$(this).remove();
-		});
-		$(document).on('opened', '[data-reveal]', function () {
-			repositionModal();
-		});	
-		$('#photoModal').foundation('reveal', 'open');
+	'click #links a': function(evt, tmp) {
+		evt.preventDefault();
+    var options = {index: evt.currentTarget, event: evt};
+    blueimp.Gallery([evt.currentTarget.href], options);
 	}
-})
+});
 
 // ******************************
 
@@ -27,7 +19,7 @@ Template.photoModal.events({
 	'click .close-reveal-modal': function() {
 		$('#photoModal').foundation('reveal', 'close');
 	}
-})
+});
 
 // ******************************
 

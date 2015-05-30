@@ -5,11 +5,11 @@
 	  <li>{{>fixtureSummary}}</li>
 	  <li class="divider"></li>
 	  <li>{{>photoSelection}}</li>
-	</ul>	
+	</ul>
 </template>
 
 <template name="twitterFeed">
-	
+
 </template>
 
 <template name="tableSummary">
@@ -37,7 +37,7 @@
 	<h6>Recent Photos:</h6>
 	{{#each photoSelection}}
 		<a class="th thumbnailHolder" href="/about/photos">
-			<div class="sidebarThumbnail" style="background-image: url('{{this}}')"></div>
+			<div class="sidebarThumbnail" style="background-image: url('http://cdn.filter.to/300x200/{{stripProtocol this}}')"></div>
 		</a>
 	{{/each}}
 </template>
