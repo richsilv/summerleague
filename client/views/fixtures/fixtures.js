@@ -68,8 +68,9 @@ function mapRender(mapDetails) {
 		}),
 		mapCenter = mapDetails.mapCenter,
 		mapZoom = mapDetails.mapZoom;
-	UI.materialize(HTML.DIV({id: 'map'}), $('#mapHolder')[0]);
-    L.Icon.Default.imagePath = 'packages/leaflet/images';
+	// UI.materialize(HTML.DIV({id: 'map'}), $('#mapHolder')[0]);
+  $('#mapHolder').append('<div id="map"></div>');
+	L.Icon.Default.imagePath = 'packages/leaflet/images';
 	window.map = L.map('map', {
   		doubleClickZoom: false
 	});
@@ -85,6 +86,6 @@ function mapRender(mapDetails) {
 				}),
 				title: marker.options.title
 			}).addTo(window.map);
-		});		
+		});
 	});
 }

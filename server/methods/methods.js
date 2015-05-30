@@ -1,4 +1,4 @@
-fs = Meteor.require('fs');
+fs = Meteor.npmRequire('fs');
 var s3;
 
 Meteor.methods({
