@@ -51,6 +51,21 @@ Meteor.methods({
 		else fut.return(null);
 		return fut.wait();
 	},
+	getResultsAvailable: function() {
+		var list = s3.listObjectsSync({Bucket: AppVars.AWSBucket, Prefix: 'results/'});
+		return list;
+	},
+	processResults: function(filename, raceName) {
+		var fut = new Future();
+		if (filename)
+			s3.getObject({ Bucket: AppVars.AWSBucket, Key: 'results/' + filename }, function(err, data) {
+	    	if (!err)
+	        fut.return(CSVtoJSON(data, raceName));
+				else throw new Meteor.Error(err);
+			});
+		else fut.return(null);
+		return fut.wait();
+	},
 	insertResults: function(results, password) {
 		if (password !== Meteor.settings.password) return false;
 		if (typeof results === "string") {
@@ -61,3 +76,28 @@ Meteor.methods({
 		}
 	}
 });
+
+var getCSV = function(filename, callback) {
+	Meteor.call('getCSV', filename, function(err, res) {
+		if (err)
+			console.log(err);
+		else
+			callback(res);
+	});
+};
+
+var CSVtoJSON = function(data, raceName) {
+	var lines = data.split('\n'),
+		headers = lines.shift().split(','),
+		results = lines.map(function(l) {
+			var d = l.split(','),
+				e = {};
+			d.forEach(function(x, i) {
+				e[headers[i]] = (headers[i] === 'Pos') ? parseInt(x, 10) : x;
+			});
+			if (raceName)
+				e.Race = raceName;
+			return e.Pos ? e : null;
+		});
+	return results;
+};
