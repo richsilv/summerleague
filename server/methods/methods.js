@@ -58,11 +58,16 @@ Meteor.methods({
 	processResults: function(filename, raceName) {
 		var fut = new Future();
 		if (filename)
-			s3.getObject({ Bucket: AppVars.AWSBucket, Key: 'results/' + filename }, function(err, data) {
-	    	if (!err)
-	        fut.return(CSVtoJSON(data, raceName));
+			s3.getObject({ Bucket: AppVars.AWSBucket, Key: filename }, Meteor.bindEnvironment(function(err, data) {
+	    	if (!err) {
+					var results = CSVtoJSON(data.Body.toString(), raceName);
+					_.forEach(results, function(result) {
+						Results.insert(result);
+					});
+					fut.return(results.length);
+				}
 				else throw new Meteor.Error(err);
-			});
+			}));
 		else fut.return(null);
 		return fut.wait();
 	},
