@@ -97,7 +97,7 @@ Router.map(function () {
     path: '/about/clubs',
 
     data: function() {
-      return Clubs.find();
+      return {clubs: Clubs.find()};
     },
 
     action: function () {

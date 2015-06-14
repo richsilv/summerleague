@@ -9,3 +9,7 @@ Template.registerHelper("route1", function(name) {
 Template.registerHelper("stripProtocol", function(url) {
 	return url.replace(/.*?:\/\//g, "");
 });
+
+Template.registerHelper("dateFormat", function(date, format) {
+	return moment(date).format(format);
+});

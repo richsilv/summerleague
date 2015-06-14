@@ -53,7 +53,7 @@ Meteor.methods({
 	},
 	getResultsAvailable: function() {
 		var list = s3.listObjectsSync({Bucket: AppVars.AWSBucket, Prefix: 'results/'});
-		return list;
+		if (list) return _.filter(list.Contents, function(item) { return item.Size; });
 	},
 	processResults: function(filename, raceName) {
 		var fut = new Future();

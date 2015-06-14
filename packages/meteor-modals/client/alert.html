@@ -1,0 +1,37 @@
+<template name="__antiModals__alert">
+
+  <div class="anti-modal-box">
+
+    {{#if titleOrCloser}}
+      <div class="anti-modal-header">
+        {{#if title}}
+          <span class="anti-modal-title">{{{title}}}</span>
+        {{/if}}
+        {{#if closer}}
+          <span class="anti-modal-closer">&times;</span>
+        {{/if}}
+      </div>
+    {{/if}}
+      
+    <div class="anti-modal-body">
+      {{{message}}}
+      {{#if prompt}}
+        <div><input class="anti-modal-prompt" type="text" value="{{value}}" placeholder="{{placeholder}}"/></div>
+      {{/if}}
+    </div>
+
+    {{#if okOrCancel}}
+      <div class="anti-modal-footer">
+        {{#if cancel}}
+          <button class="anti-modal-button anti-modal-button-cancel">{{cancel}}</button>
+        {{/if}}
+        {{#if ok}}
+          <button class="anti-modal-button anti-modal-button-action">{{ok}}</button>
+        {{/if}}
+      </div>
+    {{/if}}
+
+  </div>
+
+</template>
+

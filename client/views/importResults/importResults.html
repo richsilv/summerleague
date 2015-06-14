@@ -1,0 +1,84 @@
+<template name="importResults">
+  <ul class="breadcrumb">
+    <li><a href="/admin" class="houston-home"><i class="fa fa-home"></i>Home</a></li>
+  </ul>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Import Results</h1>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default margin-top">
+    <div class="panel-body">
+      {{#each resultsFiles}}
+
+      <div>
+        <button class="btn btn-default" data-action="import-results">{{Key}}</button>&nbsp;<span class="label label-info">Added {{dateFormat LastModified 'DD MMM YY'}}</span>
+      </div>
+
+      {{/each}}
+    </div>
+  </div>
+
+</template>
+
+<template name="importModal">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close anti-modal-closer" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Import Results</h4>
+      </div>
+      <div class="modal-body">
+        <p>Really import the results in <strong>{{Key}}</strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default anti-modal-closer">Close</button>
+        <button type="button" class="btn btn-primary" data-action="import">Import</button>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="failureModal">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close anti-modal-closer" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Import Failed</h4>
+      </div>
+      <div class="modal-body">
+        <p>Sorry, but there was a problem and the server returned an error:</p>
+        <pre>{{err}}</pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default anti-modal-closer">Close</button>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="successModal">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close anti-modal-closer" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Import Successful</h4>
+      </div>
+      <div class="modal-body">
+        <p>A total of <strong>{{resultCount}}</strong> results were added.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default anti-modal-closer">Close</button>
+      </div>
+    </div>
+  </div>
+
+</template>

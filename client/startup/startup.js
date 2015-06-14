@@ -18,3 +18,9 @@ Meteor.call('connectAWS', function(err, url) {
 		});
 	}
 });
+
+Houston.menu({
+	type: 'template',
+	use: 'importResults',
+	title: 'Import Results'
+});
